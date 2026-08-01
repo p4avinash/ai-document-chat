@@ -1,4 +1,4 @@
-import { useGlobalStore } from "../store/useGlobalStore"
+import { useGlobalStore } from "../store/app.store"
 
 function Counter() {
   const { count, increment, decrement, reset } = useGlobalStore()
