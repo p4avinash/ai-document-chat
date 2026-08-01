@@ -4,7 +4,12 @@ import { useState } from "react"
 
 const { TextArea } = Input
 
-const ChatInput = () => {
+interface ChatInputProps {
+  onSend: (message: string) => void
+  isLoading?: boolean
+}
+
+const ChatInput = ({ onSend, isLoading = false }: ChatInputProps) => {
   const [question, setQuestion] = useState("")
 
   const handleSend = () => {
@@ -12,7 +17,7 @@ const ChatInput = () => {
 
     if (!trimmedQuestion) return
 
-    console.log(trimmedQuestion)
+    onSend(trimmedQuestion)
 
     setQuestion("")
   }
@@ -42,6 +47,7 @@ const ChatInput = () => {
           maxRows: 5,
         }}
         variant='borderless'
+        disabled={isLoading}
         styles={{
           textarea: {
             background: "#111827",
@@ -61,7 +67,8 @@ const ChatInput = () => {
       <Button
         type='primary'
         onClick={handleSend}
-        disabled={!question.trim()}
+        loading={isLoading}
+        disabled={!question.trim() || isLoading}
         icon={
           <SendOutlined
             style={{

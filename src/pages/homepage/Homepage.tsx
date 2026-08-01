@@ -20,9 +20,26 @@ const HomePage = () => {
 
       <UploadSection />
 
-      <DocumentSection />
+      <div
+        style={{
+          display: "flex",
+          gap: 24,
+          maxWidth: 1600,
+          margin: "24px auto",
+          padding: "0 24px",
+          alignItems: "stretch",
+        }}
+      >
+        <DocumentSection />
 
-      <ChatSection />
+        <div
+          style={{
+            flex: 1,
+          }}
+        >
+          <ChatSection />
+        </div>
+      </div>
 
       <Footer />
     </div>

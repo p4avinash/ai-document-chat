@@ -32,6 +32,7 @@ const MessageBubble = ({ message }: MessageBubbleProps) => {
         />
 
         <Card
+          id={message.id}
           style={{
             background: isUser ? "#2563EB" : "#111827",
             border: isUser ? "none" : "1px solid #1f2937",

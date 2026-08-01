@@ -11,8 +11,10 @@ interface UploadedDocument {
 interface UploadStore {
   selectedFile: File | null
   currentDocument: UploadedDocument | null
+
   isUploading: boolean
   uploadProgress: number
+  uploadStep: number
 
   setSelectedFile: (file: File | null) => void
 
@@ -22,14 +24,18 @@ interface UploadStore {
 
   setUploadProgress: (progress: number) => void
 
+  setUploadStep: (step: number) => void
+
   resetUpload: () => void
 }
 
 export const useUploadStore = create<UploadStore>((set) => ({
   selectedFile: null,
   currentDocument: null,
+
   isUploading: false,
   uploadProgress: 0,
+  uploadStep: 0,
 
   setSelectedFile: (file) =>
     set({
@@ -51,11 +57,17 @@ export const useUploadStore = create<UploadStore>((set) => ({
       uploadProgress: progress,
     }),
 
+  setUploadStep: (step) =>
+    set({
+      uploadStep: step,
+    }),
+
   resetUpload: () =>
     set({
       selectedFile: null,
       currentDocument: null,
       isUploading: false,
       uploadProgress: 0,
+      uploadStep: 0,
     }),
 }))

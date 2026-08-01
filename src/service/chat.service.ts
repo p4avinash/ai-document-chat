@@ -1,9 +1,17 @@
 import api from "../lib/axios"
 
-export const askQuestion = async (question: string) => {
-  const response = await api.post("/chat", {
-    question,
+interface ChatResponse {
+  answer: string
+}
+
+export const askQuestion = async (
+  message: string,
+  documentId: string,
+): Promise<ChatResponse> => {
+  const { data } = await api.post<ChatResponse>("/chat", {
+    message,
+    documentId,
   })
 
-  return response.data
+  return data
 }
