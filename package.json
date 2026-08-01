@@ -10,9 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^6.3.2",
     "@tailwindcss/vite": "^4.3.3",
+    "antd": "^6.5.3",
+    "axios": "^1.19.0",
+    "dayjs": "^1.11.21",
+    "framer-motion": "^12.43.0",
+    "highlight.js": "^11.11.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "react-dropzone": "^19.1.1",
+    "react-hot-toast": "^2.6.0",
+    "react-markdown": "^10.1.0",
     "tailwindcss": "^4.3.3",
     "zustand": "^5.0.14"
   },

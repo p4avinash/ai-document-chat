@@ -1,0 +1,7 @@
+export { default as HeroSection } from "./HeroSection"
+export { default as HeroContent } from "./HeroContent"
+export { default as HeroBadge } from "./HeroBadge"
+export { default as HeroFeatures } from "./HeroFeatures"
+export { default as HeroCTA } from "./HeroCTA"
+export { default as HeroIllustration } from "./HeroIllustration"
+export { default as TechStack } from "./TechStack"
