@@ -2,7 +2,7 @@ import { Header } from "../../components/common/header"
 import UploadSection from "../../components/upload/UploadSection"
 import DocumentSection from "../../components/document/DocumentSection"
 import ChatSection from "../../components/chat/ChatSection"
-import Footer from "../../components/common/Footer"
+import { Footer } from "../../components/common/footer"
 import { HeroSection } from "../../components/hero"
 
 const HomePage = () => {

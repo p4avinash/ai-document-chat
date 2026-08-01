@@ -1,0 +1,666 @@
+/* ==========================================================
+   PART 1 START
+   Global Layout + Glass Container + Floating Card
+========================================================== */
+
+.footer {
+  position: relative;
+  margin-top: 140px;
+  padding: 120px 24px 40px;
+
+  background: radial-gradient(
+    circle at top center,
+    rgba(124, 92, 255, 0.18),
+    transparent 35%
+  );
+}
+
+.container {
+  position: relative;
+
+  width: min(1400px, 100%);
+
+  margin: auto;
+
+  background: linear-gradient(
+    180deg,
+    rgba(18, 24, 38, 0.98),
+    rgba(9, 13, 24, 0.98)
+  );
+
+  border-radius: 30px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(22px);
+
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 30px 80px rgba(0, 0, 0, 0.55);
+}
+
+/* Purple top glow */
+
+.container::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #7c5cff,
+    #a855f7,
+    transparent
+  );
+}
+
+/* ==========================================================
+   Floating Card
+========================================================== */
+
+.statsCard {
+  position: absolute;
+
+  right: 50px;
+
+  top: -42px;
+
+  z-index: 50;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 20px 24px;
+
+  border-radius: 18px;
+
+  background: rgba(20, 26, 43, 0.96);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+}
+
+.statusDot {
+  width: 14px;
+  height: 14px;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+
+  box-shadow: 0 0 18px #22c55e;
+}
+
+.statsCard h4 {
+  margin: 0;
+
+  color: white;
+
+  font-size: 16px;
+}
+
+.statsCard p {
+  margin-top: 4px;
+
+  color: #94a3b8;
+
+  font-size: 14px;
+}
+
+/* ==========================================================
+   Grid
+========================================================== */
+
+.grid {
+  display: grid;
+
+  grid-template-columns:
+    2.3fr
+    1fr
+    1.2fr
+    1fr;
+
+  gap: 56px;
+
+  padding: 90px 50px 50px;
+}
+
+.grid section {
+  position: relative;
+}
+
+/* Vertical Divider */
+
+.grid section:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  right: -28px;
+
+  width: 1px;
+
+  height: 100%;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ==========================================================
+   PART 1 END
+
+   ⛔ Paste PART 2 BELOW THIS LINE
+========================================================== */
+
+/* ==========================================================
+   PART 2 START
+   Brand + Links + Tech + Socials
+========================================================== */
+
+/* ------------------------------
+   Brand
+------------------------------ */
+
+.logo {
+  width: 64px;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 30px;
+
+  border-radius: 18px;
+
+  margin-bottom: 24px;
+
+  background: linear-gradient(135deg, #7c5cff, #5b37ff);
+
+  box-shadow: 0 18px 45px rgba(92, 61, 255, 0.35);
+}
+
+.brand h2 {
+  margin: 0;
+
+  color: white;
+
+  font-size: 32px;
+
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+
+.brand p {
+  margin-top: 18px;
+
+  color: #94a3b8;
+
+  line-height: 1.9;
+
+  max-width: 360px;
+}
+
+/* ------------------------------
+   Badges
+------------------------------ */
+
+.badges {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-top: 28px;
+}
+
+.badges span {
+  padding: 10px 18px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  color: #cbd5e1;
+
+  font-size: 14px;
+
+  transition: 0.3s ease;
+
+  cursor: default;
+}
+
+.badges span:hover {
+  background: #7c5cff;
+
+  color: white;
+
+  transform: translateY(-3px);
+}
+
+/* ------------------------------
+   Headings
+------------------------------ */
+
+.grid h3 {
+  margin: 0 0 26px;
+
+  color: white;
+
+  font-size: 18px;
+
+  font-weight: 600;
+}
+
+/* ------------------------------
+   Quick Links
+------------------------------ */
+
+.links {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+
+  margin: 0;
+
+  padding: 0;
+}
+
+.links li {
+  list-style: none;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  color: #94a3b8;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.links li:hover {
+  color: white;
+
+  transform: translateX(8px);
+}
+
+/* ------------------------------
+   Tech Grid
+------------------------------ */
+
+.techGrid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+.techGrid span {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 10px 12px;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  color: #cbd5e1;
+
+  font-size: 14px;
+
+  transition: 0.3s;
+}
+
+.techGrid span:hover {
+  background: #7c5cff;
+
+  color: white;
+
+  transform: translateY(-3px);
+}
+
+/* ------------------------------
+   Socials
+------------------------------ */
+
+.socials {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+.socials a {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  color: #94a3b8;
+
+  text-decoration: none;
+
+  transition: 0.25s ease;
+}
+
+.socials a:hover {
+  color: white;
+
+  transform: translateX(8px);
+}
+
+/* ------------------------------
+   Divider
+------------------------------ */
+
+.divider {
+  width: calc(100% - 100px);
+
+  height: 1px;
+
+  margin: auto;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ------------------------------
+   Bottom Bar
+------------------------------ */
+
+.bottomBar {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 28px 50px;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+/* ==========================================================
+   PART 2 END
+
+   ⛔ Paste PART 3 BELOW THIS LINE
+========================================================== */
+
+/* ==========================================================
+   PART 3 START
+   Responsive + Polish
+========================================================== */
+
+/* ---------- Large Tablet ---------- */
+
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 50px;
+  }
+
+  .grid section::after {
+    display: none;
+  }
+
+  .statsCard {
+    right: 32px;
+  }
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 992px) {
+  .footer {
+    padding: 90px 20px 30px;
+  }
+
+  .container {
+    border-radius: 24px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+
+    padding: 80px 32px 40px;
+  }
+
+  .brand {
+    text-align: center;
+  }
+
+  .logo {
+    margin: 0 auto 20px;
+  }
+
+  .brand p {
+    max-width: 100%;
+  }
+
+  .badges {
+    justify-content: center;
+  }
+
+  .statsCard {
+    position: static;
+
+    width: calc(100% - 40px);
+
+    margin: 0 auto 30px;
+
+    justify-content: center;
+  }
+
+  .divider {
+    width: calc(100% - 64px);
+  }
+
+  .bottomBar {
+    padding: 24px 32px;
+  }
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 768px) {
+  .footer {
+    margin-top: 80px;
+
+    padding: 70px 16px 24px;
+  }
+
+  .container {
+    border-radius: 20px;
+  }
+
+  .statsCard {
+    width: 100%;
+
+    margin-bottom: 24px;
+
+    border-radius: 16px;
+
+    padding: 16px;
+
+    gap: 12px;
+  }
+
+  .statsCard h4 {
+    font-size: 15px;
+  }
+
+  .statsCard p {
+    font-size: 13px;
+  }
+
+  .grid {
+    padding: 36px 22px;
+
+    gap: 36px;
+  }
+
+  .brand h2 {
+    font-size: 28px;
+  }
+
+  .brand p {
+    font-size: 15px;
+
+    line-height: 1.8;
+  }
+
+  .grid h3 {
+    margin-bottom: 18px;
+
+    text-align: center;
+  }
+
+  .links {
+    align-items: center;
+  }
+
+  .links li {
+    justify-content: center;
+  }
+
+  .techGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .socials {
+    align-items: center;
+  }
+
+  .socials a {
+    justify-content: center;
+  }
+
+  .divider {
+    width: calc(100% - 44px);
+  }
+
+  .bottomBar {
+    flex-direction: column;
+
+    gap: 12px;
+
+    text-align: center;
+
+    padding: 22px;
+  }
+}
+
+/* ---------- Small Mobile ---------- */
+
+@media (max-width: 480px) {
+  .grid {
+    padding: 30px 18px;
+  }
+
+  .brand h2 {
+    font-size: 24px;
+  }
+
+  .logo {
+    width: 54px;
+
+    height: 54px;
+
+    font-size: 24px;
+  }
+
+  .badges {
+    gap: 8px;
+  }
+
+  .badges span {
+    font-size: 12px;
+
+    padding: 8px 12px;
+  }
+
+  .techGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .statsCard {
+    padding: 14px;
+  }
+
+  .statsCard h4 {
+    font-size: 14px;
+  }
+
+  .statsCard p {
+    font-size: 12px;
+  }
+}
+
+/* ---------- Hover Effects ---------- */
+
+.logo,
+.badges span,
+.techGrid span,
+.links li,
+.socials a {
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  transform: rotate(-6deg) scale(1.05);
+}
+
+.container {
+  transition: box-shadow 0.35s ease;
+}
+
+.container:hover {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 35px 90px rgba(0, 0, 0, 0.6);
+}
+
+/* ==========================================================
+   PART 3 END
+========================================================== */
