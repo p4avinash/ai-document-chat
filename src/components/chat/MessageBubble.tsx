@@ -1,9 +1,5 @@
-import { Avatar, Card, Flex, Tag, Typography } from "antd"
-import {
-  RobotOutlined,
-  UserOutlined,
-  FileTextOutlined,
-} from "@ant-design/icons"
+import { Avatar, Card, Flex, Typography } from "antd"
+import { RobotOutlined, UserOutlined, FileTextOutlined } from "@ant-design/icons"
 
 import { useState } from "react"
 
@@ -74,60 +70,67 @@ const MessageBubble = ({ message }: MessageBubbleProps) => {
           </Text>
 
           {!!message.sources?.length && (
-            <Flex
-              vertical
-              gap={10}
-              style={{
-                marginTop: 20,
-              }}
-            >
-              <Text
-                style={{
-                  color: "#94A3B8",
-                  fontWeight: 600,
-                }}
-              >
-                📚 Sources ({message.sources.length})
-              </Text>
-
-              {message.sources.map((source) => (
-                <Card
-                  key={source.chunkId}
-                  hoverable
-                  onClick={() => handleSourceClick(source)}
-                  size='small'
+            <Flex vertical gap={10} style={{ marginTop: 16 }}>
+              <Flex align='center' gap={8}>
+                <FileTextOutlined
                   style={{
-                    background: "#0F172A",
-                    border: "1px solid #1E293B",
-                    cursor: "pointer",
+                    color: "#60A5FA",
+                    fontSize: 14,
                   }}
-                  styles={{
-                    body: {
-                      padding: 12,
-                    },
+                />
+                <Text
+                  style={{
+                    color: "#94A3B8",
+                    fontWeight: 600,
+                    fontSize: 12,
                   }}
                 >
-                  <Flex justify='space-between' align='center'>
-                    <Flex gap={8} align='center'>
-                      <FileTextOutlined
-                        style={{
-                          color: "#60A5FA",
-                        }}
-                      />
+                  Sources ({message.sources.length})
+                </Text>
+              </Flex>
 
-                      <Text
-                        style={{
-                          color: "#fff",
-                        }}
-                      >
-                        {source.chunkId}
-                      </Text>
-                    </Flex>
-
-                    <Tag color='blue'>{source.score}%</Tag>
+              <Flex wrap gap={8}>
+                {message.sources.map((source) => (
+                  <Flex
+                    key={source.chunkId}
+                    align='center'
+                    gap={6}
+                    onClick={() => handleSourceClick(source)}
+                    style={{
+                      cursor: "pointer",
+                      padding: "4px 10px",
+                      background: "#0F172A",
+                      border: "1px solid #1E293B",
+                      borderRadius: 8,
+                      fontSize: 12,
+                      lineHeight: "18px",
+                      transition:
+                        "border-color 0.2s ease, background 0.2s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = "#334155"
+                      e.currentTarget.style.background = "#1E293B"
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = "#1E293B"
+                      e.currentTarget.style.background = "#0F172A"
+                    }}
+                  >
+                    <Text style={{ color: "#E2E8F0", fontSize: 12 }}>
+                      {source.chunkId}
+                    </Text>
+                    <Text
+                      style={{
+                        color: "#60A5FA",
+                        fontSize: 12,
+                        fontWeight: 600,
+                      }}
+                    >
+                      {source.score}%
+                    </Text>
                   </Flex>
-                </Card>
-              ))}
+                ))}
+              </Flex>
             </Flex>
           )}
         </Card>

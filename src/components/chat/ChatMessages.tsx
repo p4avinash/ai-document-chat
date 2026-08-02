@@ -1,29 +1,57 @@
 import { Flex } from "antd"
-import { useEffect } from "react"
+import { useEffect, type RefObject } from "react"
 
 import { useChatStore } from "../../store/chat.store"
 
 import MessageBubble from "./MessageBubble"
+import TypingIndicator from "./TypingIndicator"
 
-const ChatMessages = () => {
-  const { messages, activeMessageId } = useChatStore()
+interface ChatMessagesProps {
+  scrollContainerRef: RefObject<HTMLDivElement | null>
+}
 
-  // const scrollToMessage = (id: string) => {
-  //   const element = document.getElementById(id)
-
-  //   if (!element) return
-
-  //   element.scrollIntoView({
-  //     behavior: "smooth",
-  //     block: "start",
-  //   })
-  // }
+const ChatMessages = ({ scrollContainerRef }: ChatMessagesProps) => {
+  const { messages, activeMessageId, isLoading } = useChatStore()
 
   useEffect(() => {
+    const container = scrollContainerRef.current
+
+    if (!container) return
+
+    if (isLoading) {
+      const element = document.getElementById("typing-indicator")
+
+      if (!element) return
+
+      const offset =
+        element.getBoundingClientRect().top -
+        container.getBoundingClientRect().top +
+        container.scrollTop
+
+      container.scrollTo({
+        top: offset,
+        behavior: "smooth",
+      })
+
+      return
+    }
+
     if (!activeMessageId) return
 
-    // scrollToMessage(activeMessageId)
-  }, [activeMessageId])
+    const element = document.getElementById(activeMessageId)
+
+    if (!element) return
+
+    const offset =
+      element.getBoundingClientRect().top -
+      container.getBoundingClientRect().top +
+      container.scrollTop
+
+    container.scrollTo({
+      top: offset,
+      behavior: "smooth",
+    })
+  }, [activeMessageId, isLoading, scrollContainerRef])
 
   return (
     <Flex
@@ -37,6 +65,8 @@ const ChatMessages = () => {
       {messages.map((message) => (
         <MessageBubble key={message.id} message={message} />
       ))}
+
+      {isLoading && <TypingIndicator />}
     </Flex>
   )
 }

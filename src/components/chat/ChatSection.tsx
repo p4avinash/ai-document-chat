@@ -1,3 +1,5 @@
+import { useRef } from "react"
+
 import { askQuestion } from "../../service/chat.service"
 
 import { useChatStore } from "../../store/chat.store"
@@ -10,6 +12,8 @@ import ChatMessages from "./ChatMessages"
 import EmptyChat from "./EmptyChat"
 
 const ChatSection = () => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+
   const { messages, addMessage, isLoading, setLoading, setActiveMessage } =
     useChatStore()
 
@@ -64,6 +68,7 @@ const ChatSection = () => {
       }}
     >
       <div
+        ref={scrollContainerRef}
         style={{
           flex: 1,
           overflowY: "auto",
@@ -71,7 +76,11 @@ const ChatSection = () => {
           paddingBottom: 20,
         }}
       >
-        {messages.length === 0 ? <EmptyChat /> : <ChatMessages />}
+        {messages.length === 0 ? (
+          <EmptyChat />
+        ) : (
+          <ChatMessages scrollContainerRef={scrollContainerRef} />
+        )}
       </div>
 
       <div

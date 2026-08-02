@@ -108,7 +108,7 @@ const Footer = () => {
           <section className={styles.brand}>
             <div className={styles.logo}>📄</div>
 
-            <h2>AI Document Chat</h2>
+            <h2>DocMind AI</h2>
 
             <p>
               AI-powered document intelligence built using Retrieval-Augmented
@@ -207,7 +207,7 @@ const Footer = () => {
         {/* Bottom */}
 
         <div className={styles.bottomBar}>
-          <span>© {new Date().getFullYear()} AI Document Chat</span>
+          <span>© {new Date().getFullYear()} DocMind AI</span>
 
           <span>
             Built with <Heart /> by Avinash Kumar
