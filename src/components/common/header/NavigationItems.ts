@@ -8,21 +8,16 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
   {
     key: "upload",
     label: "Upload",
-    target: "upload-section",
+    target: "upload",
   },
   {
     key: "documents",
     label: "Documents",
-    target: "document-section",
+    target: "document",
   },
   {
     key: "chat",
     label: "Chat",
-    target: "chat-section",
-  },
-  {
-    key: "workflow",
-    label: "Workflow",
-    target: "workflow-section",
+    target: "chat",
   },
 ]

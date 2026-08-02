@@ -15,6 +15,7 @@ const Header = () => {
 
   return (
     <MotionHeader
+      id='header'
       initial={{
         y: -80,
         opacity: 0,

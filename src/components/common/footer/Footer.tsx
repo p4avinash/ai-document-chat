@@ -143,6 +143,7 @@ const technologies = [
 const Footer = () => {
   return (
     <motion.footer
+      id='footer'
       className={styles.footer}
       initial={{
         opacity: 0,

@@ -5,6 +5,7 @@ import HeroIllustration from "./HeroIllustration"
 const HeroSection = () => {
   return (
     <section
+      id='hero'
       style={{
         maxWidth: 1400,
         margin: "48px auto",

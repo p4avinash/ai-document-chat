@@ -10,14 +10,14 @@ const HeroCTA = () => {
   const screens = useBreakpoint()
 
   const handleUploadClick = () => {
-    document.getElementById("upload-section")?.scrollIntoView({
+    document.getElementById("upload")?.scrollIntoView({
       behavior: "smooth",
       block: "start",
     })
   }
 
   const handleChatClick = () => {
-    document.getElementById("chat-section")?.scrollIntoView({
+    document.getElementById("chat")?.scrollIntoView({
       behavior: "smooth",
       block: "start",
     })

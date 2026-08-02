@@ -51,16 +51,14 @@ const ChatSection = () => {
 
   return (
     <div
+      id='chat'
       style={{
         background: "#111827",
         border: "1px solid #1f2937",
         borderRadius: 16,
         padding: 24,
-
         height: "calc(100vh - 170px)",
-
         display: "flex",
-
         flexDirection: "column",
       }}
     >

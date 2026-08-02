@@ -20,16 +20,18 @@ const HomePage = () => {
 
       <UploadSection />
 
-      <div
+      <div className='flex flex-col lg:flex-row md:flex-row gap-6 max-w-[1600px] mx-auto px-6 items-stretch'>
+        {/* <div
         style={{
           display: "flex",
+          flexDirection: "column",
           gap: 24,
           maxWidth: 1600,
           margin: "24px auto",
           padding: "0 24px",
           alignItems: "stretch",
         }}
-      >
+      > */}
         <DocumentSection />
 
         <div

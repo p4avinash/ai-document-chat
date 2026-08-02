@@ -79,7 +79,7 @@ const UploadSection = () => {
   }
 
   return (
-    <section className='relative px-5 py-24'>
+    <section id='upload' className='relative px-5 py-24'>
       <div className='mx-auto max-w-5xl'>
         <motion.div
           initial={{ opacity: 0, y: 30 }}

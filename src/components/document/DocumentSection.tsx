@@ -13,15 +13,16 @@ const { Title, Text } = Typography
 const DocumentSection = () => {
   const { currentDocument } = useUploadStore()
 
-  if (!currentDocument) return null
+  // if (!currentDocument) return null
 
   return (
     <Card
+      id='document'
       style={{
         background: "#111827",
         border: "1px solid #1f2937",
         borderRadius: 20,
-        height: "100%",
+        // height: "100%",
       }}
       styles={{
         body: {
@@ -64,7 +65,7 @@ const DocumentSection = () => {
                 fontWeight: 600,
               }}
             >
-              {currentDocument.fileName}
+              {currentDocument?.fileName}
             </Text>
           </Flex>
         </Flex>
@@ -86,7 +87,7 @@ const DocumentSection = () => {
                 fontWeight: 600,
               }}
             >
-              {currentDocument.chunks}
+              {currentDocument?.chunks}
             </Text>
           </Flex>
         </Flex>
@@ -108,7 +109,7 @@ const DocumentSection = () => {
                 fontWeight: 600,
               }}
             >
-              {new Date(currentDocument.indexedAt).toLocaleString()}
+              {new Date(currentDocument?.indexedAt)?.toLocaleString()}
             </Text>
           </Flex>
         </Flex>
