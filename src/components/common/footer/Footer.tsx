@@ -9,9 +9,24 @@ import {
 
 import styles from "./Footer.module.css"
 
+import Heart from "./Heart"
+
 import { useUploadStore } from "../../../store/upload.store"
 
-const quickLinks = ["Upload PDF", "Chat", "Workflow", "Tech Stack"]
+const quickLinks = [
+  {
+    label: "Upload PDF",
+    id: "upload",
+  },
+  {
+    label: "Chat",
+    id: "chat",
+  },
+  {
+    label: "Tech Stack",
+    id: "footer",
+  },
+]
 
 const technologies = [
   "React",
@@ -26,6 +41,14 @@ const technologies = [
 
 const Footer = () => {
   const { currentDocument } = useUploadStore()
+
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    })
+  }
+
   return (
     <motion.footer
       id='footer'
@@ -108,10 +131,22 @@ const Footer = () => {
 
             <ul className={styles.links}>
               {quickLinks.map((item) => (
-                <li key={item}>
+                <li
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  style={{
+                    cursor: "pointer",
+                    transition: "all .25s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "translateX(6px)"
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "translateX(0px)"
+                  }}
+                >
                   <ArrowRightOutlined />
-
-                  {item}
+                  {item.label}
                 </li>
               ))}
             </ul>
@@ -140,19 +175,26 @@ const Footer = () => {
                 GitHub
               </a>
 
-              <a href='https://linkedin.com' target='_blank'>
+              <a href='https://www.linkedin.com/in/p4avinash/' target='_blank'>
                 <LinkedinOutlined />
                 LinkedIn
               </a>
 
-              <a href='#'>
+              <a
+                href='https://p4avinash-portfolio.netlify.app/'
+                target='_blank'
+              >
                 <GlobalOutlined />
                 Portfolio
               </a>
 
-              <a href='mailto:p4avinashkumar@gmail.com'>
+              <a
+                href='mailto:p4avinashkumar@gmail.com'
+                target='_blank'
+                rel='noreferrer'
+              >
                 <MailOutlined />
-                Email
+                Contact Me
               </a>
             </div>
           </section>
@@ -165,12 +207,10 @@ const Footer = () => {
         {/* Bottom */}
 
         <div className={styles.bottomBar}>
-          <span>© 2026 AI Document Chat</span>
-
-          {/* <span>Built with ❤️ by Avinash Kumar</span> */}
+          <span>© {new Date().getFullYear()} AI Document Chat</span>
 
           <span>
-            Built with <span className={styles.heart}>❤️</span> by Avinash Kumar
+            Built with <Heart /> by Avinash Kumar
           </span>
         </div>
       </div>
