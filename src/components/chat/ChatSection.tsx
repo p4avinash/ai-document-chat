@@ -1,6 +1,3 @@
-import { useEffect, useRef } from "react"
-import { Flex } from "antd"
-
 import { askQuestion } from "../../service/chat.service"
 
 import { useChatStore } from "../../store/chat.store"

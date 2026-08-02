@@ -1,11 +1,5 @@
-import React from "react"
-
-interface IProps {}
-
-const DocumentPreview: React.FC<IProps> = (props) => {
+const DocumentPreview = () => {
   return <div>DocumentPreview</div>
 }
-
-DocumentPreview.displayName = "DocumentPreview"
 
 export default DocumentPreview

@@ -8,16 +8,16 @@ import MessageBubble from "./MessageBubble"
 const ChatMessages = () => {
   const { messages, activeMessageId } = useChatStore()
 
-  const scrollToMessage = (id: string) => {
-    const element = document.getElementById(id)
+  // const scrollToMessage = (id: string) => {
+  //   const element = document.getElementById(id)
 
-    if (!element) return
+  //   if (!element) return
 
-    element.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    })
-  }
+  //   element.scrollIntoView({
+  //     behavior: "smooth",
+  //     block: "start",
+  //   })
+  // }
 
   useEffect(() => {
     if (!activeMessageId) return

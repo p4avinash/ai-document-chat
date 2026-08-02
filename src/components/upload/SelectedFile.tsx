@@ -4,7 +4,7 @@ import {
   FilePdfFilled,
   LoadingOutlined,
 } from "@ant-design/icons"
-import { Button, Card, Progress, Space, Tag, Typography, Flex } from "antd"
+import { Button, Progress, Space, Tag, Typography, Flex } from "antd"
 import { motion } from "framer-motion"
 
 const { Title, Text } = Typography

@@ -1,8 +1,4 @@
-import React from "react"
-
-interface IProps {}
-
-const TypingIndicator: React.FC<IProps> = (props) => {
+const TypingIndicator = () => {
   return <div>TypingIndicator</div>
 }
 
