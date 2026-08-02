@@ -13,7 +13,7 @@ const { Title, Text } = Typography
 const DocumentSection = () => {
   const { currentDocument } = useUploadStore()
 
-  // if (!currentDocument) return null
+  if (!currentDocument) return null
 
   return (
     <Card
