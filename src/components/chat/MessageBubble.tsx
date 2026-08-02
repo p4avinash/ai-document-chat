@@ -1,5 +1,15 @@
-import { Avatar, Card, Flex, Typography } from "antd"
-import { RobotOutlined, UserOutlined } from "@ant-design/icons"
+import { Avatar, Card, Flex, Tag, Typography } from "antd"
+import {
+  RobotOutlined,
+  UserOutlined,
+  FileTextOutlined,
+} from "@ant-design/icons"
+
+import { useState } from "react"
+
+import SourceModal from "./SourceModal"
+
+import type { Source } from "../../types/chat"
 
 import type { Message } from "../../types/chat"
 
@@ -10,6 +20,15 @@ interface MessageBubbleProps {
 }
 
 const MessageBubble = ({ message }: MessageBubbleProps) => {
+  const [selectedSource, setSelectedSource] = useState<Source | null>(null)
+
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleSourceClick = (source: Source) => {
+    setSelectedSource(source)
+
+    setIsModalOpen(true)
+  }
   const isUser = message.role === "user"
 
   return (
@@ -53,8 +72,71 @@ const MessageBubble = ({ message }: MessageBubbleProps) => {
           >
             {message.content}
           </Text>
+
+          {!!message.sources?.length && (
+            <Flex
+              vertical
+              gap={10}
+              style={{
+                marginTop: 20,
+              }}
+            >
+              <Text
+                style={{
+                  color: "#94A3B8",
+                  fontWeight: 600,
+                }}
+              >
+                📚 Sources ({message.sources.length})
+              </Text>
+
+              {message.sources.map((source) => (
+                <Card
+                  key={source.chunkId}
+                  hoverable
+                  onClick={() => handleSourceClick(source)}
+                  size='small'
+                  style={{
+                    background: "#0F172A",
+                    border: "1px solid #1E293B",
+                    cursor: "pointer",
+                  }}
+                  styles={{
+                    body: {
+                      padding: 12,
+                    },
+                  }}
+                >
+                  <Flex justify='space-between' align='center'>
+                    <Flex gap={8} align='center'>
+                      <FileTextOutlined
+                        style={{
+                          color: "#60A5FA",
+                        }}
+                      />
+
+                      <Text
+                        style={{
+                          color: "#fff",
+                        }}
+                      >
+                        {source.chunkId}
+                      </Text>
+                    </Flex>
+
+                    <Tag color='blue'>{source.score}%</Tag>
+                  </Flex>
+                </Card>
+              ))}
+            </Flex>
+          )}
         </Card>
       </Flex>
+      <SourceModal
+        open={isModalOpen}
+        source={selectedSource}
+        onClose={() => setIsModalOpen(false)}
+      />
     </Flex>
   )
 }

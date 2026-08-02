@@ -1,9 +1,17 @@
 export type MessageRole = "user" | "assistant"
 
+export interface Source {
+  id: number
+  chunkId: string
+  score: number
+  text: string
+  documentId: string
+}
+
 export interface Message {
   id: string
-  role: "user" | "assistant"
+  role: MessageRole
   content: string
-  sources?: string[]
+  sources?: Source[]
   createdAt: string
 }

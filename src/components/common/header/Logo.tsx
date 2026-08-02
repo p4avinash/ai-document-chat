@@ -48,7 +48,7 @@ const Logo = () => {
             lineHeight: 1,
           }}
         >
-          AI Document Chat
+          DocMind AI
         </Title>
 
         <Text

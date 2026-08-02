@@ -1,7 +1,9 @@
 import api from "../lib/axios"
+import type { Source } from "../types/chat"
 
 interface ChatResponse {
   answer: string
+  sources: Source[]
 }
 
 export const askQuestion = async (

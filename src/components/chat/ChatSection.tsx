@@ -37,6 +37,7 @@ const ChatSection = () => {
         id: crypto.randomUUID(),
         role: "assistant",
         content: response.answer,
+        sources: response.sources,
         createdAt: new Date().toISOString(),
       }
 
