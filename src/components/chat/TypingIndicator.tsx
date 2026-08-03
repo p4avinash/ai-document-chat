@@ -42,7 +42,6 @@ const TypingIndicator = () => {
           className={styles.card}
           style={{
             background: "#111827",
-            border: "1px solid #1f2937",
             borderRadius: 18,
           }}
           styles={{

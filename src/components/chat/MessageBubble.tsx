@@ -62,16 +62,13 @@ const MessageBubble = ({ message }: MessageBubbleProps) => {
 
   return (
     <Flex justify={isUser ? "flex-end" : "flex-start"}>
-      <Flex
-        gap={12}
-        align='flex-start'
-        style={{
-          maxWidth: "80%",
-          flexDirection: isUser ? "row-reverse" : "row",
-        }}
+      <div
+        className={`flex gap-2 sm:gap-3 items-start max-w-[94%] sm:max-w-[85%] md:max-w-[80%] ${
+          isUser ? "flex-row-reverse" : "flex-row"
+        }`}
       >
         <Avatar
-          size={40}
+          size={36}
           icon={isUser ? <UserOutlined /> : <RobotOutlined />}
           style={{
             background: isUser ? "#2563EB" : "#7C3AED",
@@ -85,75 +82,87 @@ const MessageBubble = ({ message }: MessageBubbleProps) => {
             background: isUser ? "#2563EB" : "#111827",
             border: isUser ? "none" : "1px solid #1f2937",
             borderRadius: 18,
+            overflow: "hidden",
           }}
           styles={{
             body: {
-              padding: "14px 18px",
+              padding: "12px 16px",
             },
           }}
         >
-          <Flex gap={2} vertical>
+          <Flex gap={4} vertical>
             {!isUser && (
-              <Flex gap={10} justify='flex-end'>
-                <IoCopyOutline
+              <Flex gap={12} justify='flex-end' align='center' style={{ marginBottom: 4 }}>
+                <button
                   onClick={() => handleCopy()}
-                  style={{ cursor: "pointer", color: "#fff", fontSize: 18 }}
-                />
-                <IoShareOutline
+                  title="Copy"
+                  className="text-slate-400 hover:text-white p-1 rounded transition-colors active:scale-95 cursor-pointer"
+                >
+                  <IoCopyOutline style={{ fontSize: 16 }} />
+                </button>
+                <button
                   onClick={() => handleShare()}
-                  style={{ cursor: "pointer", color: "#fff", fontSize: 18 }}
-                />
-                <IoDownloadOutline
+                  title="Share"
+                  className="text-slate-400 hover:text-white p-1 rounded transition-colors active:scale-95 cursor-pointer"
+                >
+                  <IoShareOutline style={{ fontSize: 16 }} />
+                </button>
+                <button
                   onClick={() => handleDownload()}
-                  style={{ cursor: "pointer", color: "#fff", fontSize: 18 }}
-                />
+                  title="Download"
+                  className="text-slate-400 hover:text-white p-1 rounded transition-colors active:scale-95 cursor-pointer"
+                >
+                  <IoDownloadOutline style={{ fontSize: 16 }} />
+                </button>
               </Flex>
             )}
             <Text
               style={{
                 color: "#fff",
                 whiteSpace: "pre-wrap",
-                lineHeight: 1.8,
+                wordBreak: "break-word",
+                lineHeight: 1.7,
+                fontSize: 14,
               }}
             >
               {message.content}
             </Text>
           </Flex>
           {!!message.sources?.length && (
-            <Flex vertical gap={10} style={{ marginTop: 16 }}>
-              <Flex align='center' gap={8}>
+            <Flex vertical gap={8} style={{ marginTop: 14 }}>
+              <Flex align='center' gap={6}>
                 <FileTextOutlined
                   style={{
                     color: "#60A5FA",
-                    fontSize: 14,
+                    fontSize: 12,
                   }}
                 />
                 <Text
                   style={{
                     color: "#94A3B8",
                     fontWeight: 600,
-                    fontSize: 12,
+                    fontSize: 11,
                   }}
                 >
                   Sources ({message.sources.length})
                 </Text>
               </Flex>
 
-              <Flex wrap gap={8}>
+              <Flex wrap gap={4} style={{ width: "100%" }}>
                 {message.sources.map((source) => (
                   <Flex
                     key={source.chunkId}
                     align='center'
-                    gap={6}
+                    gap={3}
                     onClick={() => handleSourceClick(source)}
                     style={{
                       cursor: "pointer",
-                      padding: "4px 10px",
+                      padding: "1px 6px",
                       background: "#0F172A",
                       border: "1px solid #1E293B",
-                      borderRadius: 8,
-                      fontSize: 12,
-                      lineHeight: "18px",
+                      borderRadius: 4,
+                      fontSize: 10,
+                      lineHeight: "14px",
                       transition:
                         "border-color 0.2s ease, background 0.2s ease",
                     }}
@@ -166,13 +175,20 @@ const MessageBubble = ({ message }: MessageBubbleProps) => {
                       e.currentTarget.style.background = "#0F172A"
                     }}
                   >
-                    <Text style={{ color: "#E2E8F0", fontSize: 12 }}>
+                    <Text
+                      ellipsis={{ tooltip: source.chunkId }}
+                      style={{
+                        color: "#E2E8F0",
+                        fontSize: 10,
+                        maxWidth: 85,
+                      }}
+                    >
                       {source.chunkId}
                     </Text>
                     <Text
                       style={{
                         color: "#60A5FA",
-                        fontSize: 12,
+                        fontSize: 10,
                         fontWeight: 600,
                       }}
                     >
@@ -184,7 +200,7 @@ const MessageBubble = ({ message }: MessageBubbleProps) => {
             </Flex>
           )}
         </Card>
-      </Flex>
+      </div>
       <SourceModal
         open={isModalOpen}
         source={selectedSource}

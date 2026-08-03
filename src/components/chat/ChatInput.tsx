@@ -1,6 +1,7 @@
-import { Button, Flex, Input } from "antd"
+import { Button, Input } from "antd"
+import type { InputRef } from "antd"
 import { SendOutlined } from "@ant-design/icons"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const { TextArea } = Input
 
@@ -11,6 +12,13 @@ interface ChatInputProps {
 
 const ChatInput = ({ onSend, isLoading = false }: ChatInputProps) => {
   const [question, setQuestion] = useState("")
+  const inputRef = useRef<InputRef>(null)
+
+  useEffect(() => {
+    if (!isLoading) {
+      inputRef.current?.focus()
+    }
+  }, [isLoading])
 
   const handleSend = () => {
     const trimmedQuestion = question.trim()
@@ -20,6 +28,10 @@ const ChatInput = ({ onSend, isLoading = false }: ChatInputProps) => {
     onSend(trimmedQuestion)
 
     setQuestion("")
+
+    setTimeout(() => {
+      inputRef.current?.focus()
+    }, 0)
   }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -30,14 +42,9 @@ const ChatInput = ({ onSend, isLoading = false }: ChatInputProps) => {
   }
 
   return (
-    <Flex
-      gap={12}
-      align='end'
-      style={{
-        marginTop: 12,
-      }}
-    >
+    <div className='flex items-end gap-2 sm:gap-3 bg-[#1E293B] border border-[#334155] rounded-2xl p-1.5 sm:p-2 shadow-lg'>
       <TextArea
+        ref={inputRef}
         value={question}
         onChange={(event) => setQuestion(event.target.value)}
         onKeyDown={handleKeyDown}
@@ -50,17 +57,21 @@ const ChatInput = ({ onSend, isLoading = false }: ChatInputProps) => {
         disabled={isLoading}
         styles={{
           textarea: {
-            background: "#111827",
+            background: "transparent",
             color: "#ffffff",
-            padding: "14px 16px",
+            padding: "8px 12px",
             fontSize: 15,
             lineHeight: 1.5,
+            outline: "none",
+            boxShadow: "none",
           },
         }}
         style={{
-          background: "#111827",
-          border: "1px solid #1f2937",
-          borderRadius: 14,
+          background: "transparent",
+          border: "none",
+          outline: "none",
+          boxShadow: "none",
+          flex: 1,
         }}
       />
 
@@ -72,23 +83,26 @@ const ChatInput = ({ onSend, isLoading = false }: ChatInputProps) => {
         icon={
           <SendOutlined
             style={{
-              fontSize: 18,
+              fontSize: 16,
               color: "#ffffff",
             }}
           />
         }
         style={{
-          width: 48,
-          height: 48,
-          minWidth: 48,
-          borderRadius: 14,
+          width: 40,
+          height: 40,
+          minWidth: 40,
+          borderRadius: 12,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           flexShrink: 0,
+          background: question.trim() && !isLoading ? "#2563EB" : "#334155",
+          borderColor: "transparent",
+          boxShadow: question.trim() && !isLoading ? "0 2px 8px rgba(37, 99, 235, 0.4)" : "none",
         }}
       />
-    </Flex>
+    </div>
   )
 }
 

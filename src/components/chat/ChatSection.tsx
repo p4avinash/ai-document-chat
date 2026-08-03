@@ -57,15 +57,7 @@ const ChatSection = () => {
   return (
     <div
       id='chat'
-      style={{
-        background: "#111827",
-        border: "1px solid #1f2937",
-        borderRadius: 16,
-        padding: 24,
-        height: "calc(100vh - 170px)",
-        display: "flex",
-        flexDirection: "column",
-      }}
+      className='w-full bg-[#111827] border border-[#1f2937] rounded-2xl p-3 sm:p-5 md:p-6 min-h-[480px] h-[calc(100dvh-130px)] md:h-[calc(100vh-170px)] flex flex-col'
     >
       <div
         ref={scrollContainerRef}
@@ -73,11 +65,11 @@ const ChatSection = () => {
           flex: 1,
           overflowY: "auto",
           minHeight: 0,
-          paddingBottom: 20,
+          paddingBottom: 16,
         }}
       >
         {messages.length === 0 ? (
-          <EmptyChat />
+          <EmptyChat onSelectPrompt={handleSend} />
         ) : (
           <ChatMessages scrollContainerRef={scrollContainerRef} />
         )}
@@ -86,8 +78,8 @@ const ChatSection = () => {
       <div
         style={{
           flexShrink: 0,
-          paddingTop: 16,
-          background: "#0f172a",
+          paddingTop: 12,
+          background: "#111827",
           position: "sticky",
           bottom: 0,
           zIndex: 100,

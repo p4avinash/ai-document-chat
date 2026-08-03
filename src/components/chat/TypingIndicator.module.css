@@ -41,6 +41,34 @@
 .card {
   position: relative;
   overflow: hidden;
+  border-radius: 18px !important;
+  border: 1.5px solid transparent !important;
+  background:
+    linear-gradient(#111827, #111827) padding-box,
+    linear-gradient(
+      90deg,
+      #ff4500,
+      #ff8c00,
+      #ffd700,
+      #10b981,
+      #00e5ff,
+      #3b82f6,
+      #8b5cf6,
+      #ec4899,
+      #ff4500
+    ) border-box !important;
+  background-size: 100% 100%, 200% 100% !important;
+  animation: rainbowBorder 3s linear infinite !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 12px rgba(139, 92, 246, 0.25);
+}
+
+@keyframes rainbowBorder {
+  0% {
+    background-position: 0% 0%, 0% 0%;
+  }
+  100% {
+    background-position: 0% 0%, 200% 0%;
+  }
 }
 
 .card::before {
@@ -50,11 +78,12 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(96, 165, 250, 0.08),
+    rgba(255, 255, 255, 0.06),
     transparent
   );
   transform: translateX(-100%);
   animation: shimmer 2.4s infinite;
+  pointer-events: none;
 }
 
 @keyframes shimmer {
