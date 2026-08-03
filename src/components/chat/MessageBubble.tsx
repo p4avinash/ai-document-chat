@@ -1,12 +1,20 @@
 import { Avatar, Card, Flex, Typography } from "antd"
-import { RobotOutlined, UserOutlined, FileTextOutlined } from "@ant-design/icons"
+import {
+  RobotOutlined,
+  UserOutlined,
+  FileTextOutlined,
+} from "@ant-design/icons"
+
+import { toast } from "react-hot-toast"
 
 import { useState } from "react"
 
 import SourceModal from "./SourceModal"
 
 import type { Source } from "../../types/chat"
-
+import { IoCopyOutline } from "react-icons/io5"
+import { IoShareOutline } from "react-icons/io5"
+import { IoDownloadOutline } from "react-icons/io5"
 import type { Message } from "../../types/chat"
 
 const { Text } = Typography
@@ -26,6 +34,31 @@ const MessageBubble = ({ message }: MessageBubbleProps) => {
     setIsModalOpen(true)
   }
   const isUser = message.role === "user"
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(message.content)
+    toast.success("Copied to clipboard")
+  }
+
+  const handleShare = () => {
+    // open share menu to share the copied content
+    const shareData = {
+      title: "Share",
+      text: message.content,
+    }
+    if (navigator.share) {
+      navigator.share(shareData)
+    }
+  }
+
+  const handleDownload = () => {
+    const link = document.createElement("a")
+    link.href = URL.createObjectURL(
+      new File([message.content], "message.txt", { type: "text/plain" }),
+    )
+    link.download = "message.txt"
+    link.click()
+  }
 
   return (
     <Flex justify={isUser ? "flex-end" : "flex-start"}>
@@ -59,16 +92,33 @@ const MessageBubble = ({ message }: MessageBubbleProps) => {
             },
           }}
         >
-          <Text
-            style={{
-              color: "#fff",
-              whiteSpace: "pre-wrap",
-              lineHeight: 1.8,
-            }}
-          >
-            {message.content}
-          </Text>
-
+          <Flex gap={2} vertical>
+            {!isUser && (
+              <Flex gap={10} justify='flex-end'>
+                <IoCopyOutline
+                  onClick={() => handleCopy()}
+                  style={{ cursor: "pointer", color: "#fff", fontSize: 18 }}
+                />
+                <IoShareOutline
+                  onClick={() => handleShare()}
+                  style={{ cursor: "pointer", color: "#fff", fontSize: 18 }}
+                />
+                <IoDownloadOutline
+                  onClick={() => handleDownload()}
+                  style={{ cursor: "pointer", color: "#fff", fontSize: 18 }}
+                />
+              </Flex>
+            )}
+            <Text
+              style={{
+                color: "#fff",
+                whiteSpace: "pre-wrap",
+                lineHeight: 1.8,
+              }}
+            >
+              {message.content}
+            </Text>
+          </Flex>
           {!!message.sources?.length && (
             <Flex vertical gap={10} style={{ marginTop: 16 }}>
               <Flex align='center' gap={8}>
