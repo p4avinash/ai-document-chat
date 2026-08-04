@@ -1,4 +1,5 @@
 import { useRef } from "react"
+import { toast } from "react-hot-toast"
 
 import { askQuestion } from "../../service/chat.service"
 
@@ -20,7 +21,10 @@ const ChatSection = () => {
   const { currentDocument } = useUploadStore()
 
   const handleSend = async (question: string) => {
-    if (!currentDocument) return
+    if (!currentDocument) {
+      toast.error("Please upload a PDF document first to start asking questions.")
+      return
+    }
 
     const userMessage: Message = {
       id: crypto.randomUUID(),
