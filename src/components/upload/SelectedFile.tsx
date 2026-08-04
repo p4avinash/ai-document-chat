@@ -6,6 +6,7 @@ import {
 } from "@ant-design/icons"
 import { Button, Progress, Space, Tag, Typography, Flex } from "antd"
 import { motion } from "framer-motion"
+import { useUploadStore } from "../../store/upload.store"
 
 const { Title, Text } = Typography
 
@@ -30,6 +31,9 @@ const SelectedFile = ({
   progress = 0,
   onRemove,
 }: SelectedFileProps) => {
+  const { currentDocument } = useUploadStore()
+  const isUploaded = Boolean(currentDocument && !isUploading)
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -87,21 +91,7 @@ const SelectedFile = ({
           =============================== */}
 
           <div className='rounded-2xl border border-slate-700 bg-slate-800/60 p-5'>
-            {!isUploading ? (
-              <div className='flex items-center gap-3'>
-                <CheckCircleFilled className='text-xl text-green-500' />
-
-                <div>
-                  <Text className='!block !font-medium !text-white'>
-                    Ready to Upload
-                  </Text>
-
-                  <Text className='!text-slate-400'>
-                    Your document is ready. Upload will begin automatically.
-                  </Text>
-                </div>
-              </div>
-            ) : (
+            {isUploading ? (
               <Space direction='vertical' className='w-full' size='middle'>
                 <div className='flex items-center gap-3'>
                   <LoadingOutlined className='text-lg text-violet-500' />
@@ -121,6 +111,34 @@ const SelectedFile = ({
                   Indexing document into Pinecone Vector Database...
                 </Text>
               </Space>
+            ) : isUploaded ? (
+              <div className='flex items-center gap-3'>
+                <CheckCircleFilled className='text-xl text-green-500' />
+
+                <div>
+                  <Text className='!block !font-medium !text-white'>
+                    Uploaded & Indexed Successfully
+                  </Text>
+
+                  <Text className='!text-slate-400'>
+                    Your document is processed and ready for AI chat.
+                  </Text>
+                </div>
+              </div>
+            ) : (
+              <div className='flex items-center gap-3'>
+                <CheckCircleFilled className='text-xl text-green-500' />
+
+                <div>
+                  <Text className='!block !font-medium !text-white'>
+                    Ready to Upload
+                  </Text>
+
+                  <Text className='!text-slate-400'>
+                    Your document is ready. Upload will begin automatically.
+                  </Text>
+                </div>
+              </div>
             )}
           </div>
         </Space>

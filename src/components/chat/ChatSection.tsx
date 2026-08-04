@@ -57,7 +57,7 @@ const ChatSection = () => {
   return (
     <div
       id='chat'
-      className='w-full bg-[#111827] border border-[#1f2937] rounded-2xl p-3 sm:p-5 md:p-6 min-h-[480px] h-[calc(100dvh-130px)] md:h-[calc(100vh-170px)] flex flex-col'
+      className='w-full bg-[#111827] border border-[#1f2937] rounded-2xl p-3 sm:p-5 md:p-6 min-h-[580px] h-[calc(100dvh-90px)] md:h-[calc(100vh-110px)] flex flex-col'
     >
       <div
         ref={scrollContainerRef}

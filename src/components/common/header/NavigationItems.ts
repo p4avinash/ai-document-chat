@@ -11,11 +11,6 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
     target: "upload",
   },
   {
-    key: "documents",
-    label: "Documents",
-    target: "document",
-  },
-  {
     key: "chat",
     label: "Chat",
     target: "chat",

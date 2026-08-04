@@ -11,17 +11,17 @@ const HeroFeatures = () => {
   return (
     <Flex
       vertical
-      gap={screens.md ? 18 : 14}
+      gap={screens.md ? 12 : 10}
       style={{
-        marginBottom: 40,
+        marginBottom: 24,
       }}
     >
       {HERO_FEATURES.map((feature) => (
-        <Flex key={feature} align='center' gap={14}>
+        <Flex key={feature} align='center' gap={10}>
           <CheckCircleFilled
             style={{
               color: "#22C55E",
-              fontSize: screens.md ? 20 : 18,
+              fontSize: screens.md ? 16 : 14,
               flexShrink: 0,
             }}
           />
@@ -29,8 +29,8 @@ const HeroFeatures = () => {
           <Text
             style={{
               color: "#CBD5E1",
-              fontSize: screens.md ? 18 : 16,
-              lineHeight: 1.6,
+              fontSize: screens.md ? 15 : 14,
+              lineHeight: 1.5,
             }}
           >
             {feature}

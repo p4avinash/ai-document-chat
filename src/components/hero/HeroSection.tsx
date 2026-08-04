@@ -8,8 +8,8 @@ const HeroSection = () => {
       id='hero'
       style={{
         maxWidth: 1400,
-        margin: "48px auto",
-        padding: "48px",
+        margin: "24px auto",
+        padding: "32px 40px",
         borderRadius: 24,
         background:
           "linear-gradient(180deg, rgba(15,23,42,1) 0%, rgba(17,24,39,1) 100%)",

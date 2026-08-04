@@ -10,6 +10,7 @@ import { HeroSection } from "../../components/hero"
 
 const HomePage = () => {
   useEffect(() => {
+    window.scrollTo(0, 0)
     toast(
       "⚡ The backend is hosted on a free-tier server. The first request may take up to a minute while the server wakes up.",
       {

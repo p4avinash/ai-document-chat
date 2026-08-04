@@ -13,10 +13,16 @@ interface ChatInputProps {
 const ChatInput = ({ onSend, isLoading = false }: ChatInputProps) => {
   const [question, setQuestion] = useState("")
   const inputRef = useRef<InputRef>(null)
+  const isMounted = useRef(false)
 
   useEffect(() => {
+    if (!isMounted.current) {
+      isMounted.current = true
+      return
+    }
+
     if (!isLoading) {
-      inputRef.current?.focus()
+      inputRef.current?.focus({ preventScroll: true })
     }
   }, [isLoading])
 
@@ -30,7 +36,7 @@ const ChatInput = ({ onSend, isLoading = false }: ChatInputProps) => {
     setQuestion("")
 
     setTimeout(() => {
-      inputRef.current?.focus()
+      inputRef.current?.focus({ preventScroll: true })
     }, 0)
   }
 

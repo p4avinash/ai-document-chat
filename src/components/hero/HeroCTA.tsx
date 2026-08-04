@@ -44,8 +44,8 @@ const HeroCTA = () => {
           icon={<UploadOutlined />}
           onClick={handleUploadClick}
           style={{
-            height: 52,
-            paddingInline: 28,
+            height: 46,
+            paddingInline: 24,
             borderRadius: 12,
             fontWeight: 600,
             background: "linear-gradient(135deg,#6366F1,#8B5CF6)",
@@ -61,8 +61,8 @@ const HeroCTA = () => {
           icon={<MessageOutlined />}
           onClick={handleChatClick}
           style={{
-            height: 52,
-            paddingInline: 28,
+            height: 46,
+            paddingInline: 24,
             borderRadius: 12,
             fontWeight: 600,
             background: "transparent",

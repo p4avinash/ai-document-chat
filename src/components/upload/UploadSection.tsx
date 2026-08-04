@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import { toast } from "react-hot-toast"
 
 import { useUploadStore } from "../../store/upload.store"
+import { useChatStore } from "../../store/chat.store"
 import { uploadDocument } from "../../service/upload.service"
 
 import SelectedFile from "./SelectedFile"
@@ -22,11 +23,20 @@ const UploadSection = () => {
     setUploading,
     setUploadProgress,
     setUploadStep,
+    resetUpload,
   } = useUploadStore()
+
+  const { clearMessages } = useChatStore()
+
+  const handleRemove = () => {
+    resetUpload()
+    clearMessages()
+  }
 
   const handleFileSelect = async (file: File) => {
     const clientId = crypto.randomUUID()
 
+    clearMessages()
     setSelectedFile(file)
     setUploading(true)
     setUploadProgress(0)
@@ -105,7 +115,7 @@ const UploadSection = () => {
         ) : (
           <SelectedFile
             file={selectedFile}
-            onRemove={() => setSelectedFile(null)}
+            onRemove={handleRemove}
           />
         )}
       </div>

@@ -10,9 +10,9 @@ const { Title, Paragraph } = Typography
 const HeroContent = () => {
   const screens = useBreakpoint()
 
-  const titleSize = screens.xl ? 64 : screens.lg ? 56 : screens.md ? 48 : 38
+  const titleSize = screens.xl ? 44 : screens.lg ? 38 : screens.md ? 34 : 28
 
-  const descriptionSize = screens.md ? 22 : 18
+  const descriptionSize = screens.md ? 16 : 14
 
   return (
     <Flex
@@ -31,9 +31,9 @@ const HeroContent = () => {
         style={{
           color: "#fff",
           fontSize: titleSize,
-          lineHeight: 1.1,
-          marginTop: 28,
-          marginBottom: 20,
+          lineHeight: 1.15,
+          marginTop: 18,
+          marginBottom: 12,
           fontWeight: 700,
         }}
       >
@@ -44,8 +44,8 @@ const HeroContent = () => {
         style={{
           color: "#94A3B8",
           fontSize: descriptionSize,
-          lineHeight: 1.8,
-          marginBottom: 36,
+          lineHeight: 1.6,
+          marginBottom: 20,
           maxWidth: 500,
         }}
       >

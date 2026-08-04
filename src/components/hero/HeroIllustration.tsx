@@ -43,11 +43,11 @@ const HeroIllustration = () => {
         }}
         styles={{
           body: {
-            padding: screens.md ? 32 : 20,
+            padding: screens.md ? 24 : 16,
           },
         }}
       >
-        <Flex vertical gap={24}>
+        <Flex vertical gap={16}>
           {/* PDF */}
 
           <Card

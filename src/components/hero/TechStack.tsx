@@ -10,37 +10,37 @@ const TechStack = () => {
   return (
     <Flex
       vertical
-      gap={16}
+      gap={10}
       style={{
-        marginTop: 48,
+        marginTop: 24,
       }}
     >
       <Text
         style={{
           color: "#64748B",
           fontWeight: 600,
-          fontSize: 14,
-          letterSpacing: 1.2,
+          fontSize: 12,
+          letterSpacing: 1.1,
           textTransform: "uppercase",
         }}
       >
         Built With
       </Text>
 
-      <Flex wrap gap={12}>
+      <Flex wrap gap={8}>
         {TECH_STACK.map((tech) => (
           <Tag
             key={tech}
             bordered={false}
             style={{
               margin: 0,
-              padding: screens.md ? "8px 16px" : "6px 14px",
+              padding: screens.md ? "5px 12px" : "4px 10px",
               borderRadius: 999,
               background: "rgba(255,255,255,.05)",
               border: "1px solid rgba(255,255,255,.08)",
               color: "#CBD5E1",
               fontWeight: 500,
-              fontSize: screens.md ? 14 : 13,
+              fontSize: screens.md ? 13 : 12,
               cursor: "default",
               transition: ".25s",
             }}
