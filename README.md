@@ -1,75 +1,100 @@
-# React + TypeScript + Vite
+# 🧠 DocMind AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+DocMind AI is an AI-powered document chat application that allows users to upload PDF documents and interact with them using natural language.
 
-Currently, two official plugins are available:
+Instead of manually searching through long documents, users can ask questions and get context-aware answers based on the uploaded document.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Live Demo
 
-## React Compiler
+[View Live Demo](YOUR_LIVE_DEMO_URL)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 📄 Upload PDF documents
+- 💬 Chat with uploaded documents
+- 🔎 AI-powered document search
+- 🧠 Context-aware responses using RAG
+- ⚡ Fast AI responses
+- 📚 View document-based conversations
+- 📱 Responsive interface
+- 🎨 Modern dark-themed UI
+- 🔐 User authentication
+- 🗂️ Manage uploaded documents
+- 💬 Conversation history
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Frontend
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Axios
+- React Router
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### AI / Backend
 
-```
+- Node.js
+- Express.js
+- Groq
+- Jina AI Embeddings
+- Pinecone Vector Database
+- MongoDB
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Other Technologies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Multer
+- PDF Parser
+- Cloudinary
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🧠 How It Works
 
+DocMind AI follows a Retrieval-Augmented Generation (RAG) architecture.
+
+The overall flow looks like this:
+
+PDF Upload
+↓
+Text Extraction
+↓
+Text Cleaning
+↓
+Document Chunking
+↓
+Embedding Generation
+↓
+Vector Database
+↓
+Semantic Search
+↓
+Relevant Context
+↓
+LLM
+↓
+AI Response
+
+When a user asks a question, the application retrieves the most relevant parts of the uploaded document and provides them as context to the language model.
+
+This helps the model generate answers grounded in the uploaded document instead of relying only on its general knowledge.
+
+## 🏗️ Frontend Architecture
+
+The frontend is built using React and TypeScript with a component-based architecture.
+
+```text
+src/
+├── api/
+├── components/
+│   ├── auth/
+│   ├── chat/
+│   ├── documents/
+│   └── common/
+├── pages/
+├── hooks/
+├── context/
+├── lib/
+├── routes/
+├── types/
+└── App.tsx
 ```
